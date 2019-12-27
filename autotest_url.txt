@@ -1,0 +1,1 @@
+https://github.com/RPCS3/ps3autotests/tree/master/tests/cpu/ppu_fpu

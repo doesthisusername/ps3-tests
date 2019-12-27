@@ -1,0 +1,11 @@
+replace all results with an empty string for these
+--------------------------------------------------
+
+remove 000 and 7FF exp from rngtest, they're known to be off:
+^.*\[(000|7FF).+\] --.+\n
+
+remove empty lines from rngtest:
+^\n
+
+remove most special values from autotest:
+^.*-> (7f|ff).*\n

@@ -1,0 +1,18 @@
+PS3
+fmadds  [04],[16],[17]) -> 46ea61cd
+
+RPCS3 PPU LLVM truncate sources:
+result = m_ir->CreateCall(get_intrinsic<f32>(llvm::Intrinsic::fma), {
+	m_ir->CreateFPTrunc(a, GetType<f32>()),
+	m_ir->CreateFPTrunc(c, GetType<f32>()),
+	m_ir->CreateFPTrunc(b, GetType<f32>())
+});
+fmadds  [04],[16],[17]) -> 46ea61cd
+
+RPCS3 PPU LLVM truncate result:
+result = m_ir->CreateFPTrunc(m_ir->CreateCall(get_intrinsic<f64>(llvm::Intrinsic::fma), {a, c, b}), GetType<f32>());
+fmadds  [04],[16],[17]) -> 46ea61cc
+
+RPCS3 PPU LLVM master:
+result = m_ir->CreateFPTrunc(m_ir->CreateFAdd(m_ir->CreateFMul(a, c), b), GetType<f32>());
+fmadds  [04],[16],[17]) -> 46ea61cc
